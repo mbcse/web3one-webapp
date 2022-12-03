@@ -5,6 +5,7 @@
 .eslintcache
 *-lock.*
 yarn*
+.local-chromium
 
 # node
 
