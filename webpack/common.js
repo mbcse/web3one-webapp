@@ -7,6 +7,7 @@ import AppConfigPlugin from 'app-config/webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import config from 'app-config'
 import rulesMap from './rules'
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 // NOTE: Should be removed for webpack debugging, updating, or refactoring
 process.noDeprecation = true
@@ -82,6 +83,7 @@ const webpackConfig = {
   },
 
   plugins: [
+    new NodePolyfillPlugin(),
     new AppConfigPlugin(),
     new webpack.DefinePlugin(globals),
     new webpack.ProvidePlugin({

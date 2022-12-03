@@ -20,6 +20,86 @@ const addAllEnabledWalletsAfterRestoreOrCreateSeedPhrase = config?.opts?.addAllE
 const noInternalWallet = config?.opts?.ui?.disableInternalWallet
 const isWidgetBuild = config && config.isWidget
 
+interface NFT {
+  address: string;
+  price: number;
+  chain: string;
+
+}
+
+let nftData = true;
+const nftDataList : NFT[] = [
+  {
+    address: 'fuenq7r4yrt023748hrtp1uf',
+    price: 3.26,
+    chain: 'ETH'
+  },
+  {
+    address: 'fuenq7r4yrt023748hrtp1uf',
+    price: 312.435556,
+    chain: 'MATIC'
+  },
+  {
+    address: 'fuenq7r4yrt023748hrtp1uf',
+    price: 0.003,
+    chain: 'BTC'
+  }
+];
+
+console.log(nftDataList[1].address)
+console.log(nftDataList[1].price)
+console.log(nftDataList[1].chain)
+
+import React, { useState, useEffect } from 'react';
+// import '../tabledata.css';
+
+function TableData() {
+    const [data, getData] = useState([])
+    const URL = 'https://web3one.herokuapp.com/';
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
+    const fetchData = () => {
+        fetch(URL)
+            .then((res) =>
+                res.json())
+
+            .then((response) => {
+                console.log(response);
+                getData(response);
+            })
+    }
+
+    return (
+        <div style={{}}>
+            <h1>How to display JSON data to table in React JS</h1>
+            <tbody>
+                <tr>
+                    <th>User Id</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                {data.map((item, i) => (
+                    <tr key={i}>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>
+                ))}
+            </tbody>
+        </div>
+    );
+}
+
+
+
+
+
 type CurrenciesListProps = {
   multisigPendingCount: number
   goToСreateWallet: () => void
@@ -41,6 +121,10 @@ function CurrenciesList(props: CurrenciesListProps) {
   const handleRestoreMnemonic = () => {
     actions.modals.open(constants.modals.RestoryMnemonicWallet)
   }
+
+
+
+
 
   const showAssets = !(config?.opts?.ui?.disableInternalWallet)
     ? true
@@ -109,6 +193,20 @@ function CurrenciesList(props: CurrenciesListProps) {
           </div>
         </>
       )}
+
+
+
+      {
+        nftData &&
+        <>
+          <hr/><br/>
+          <h3>NFTs I own</h3>
+          <TableData/>
+        </>
+      }
+
+
+
       {!showAssets && !metamask.isConnected() && (
         <ConnectWalletModal noCloseButton />
       )}
