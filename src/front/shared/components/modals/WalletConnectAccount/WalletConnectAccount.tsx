@@ -261,8 +261,10 @@ componentDidMount(): void {
             </div>
 
 
-            <div style={{height:'50px', width:'500px', backgroundColor:'#453C67', margin: '5px', borderRadius:'5px 5px 5px 5px', marginLeft:'5px', paddingLeft:'10px', border:'1px solid white'}}>
+            <div style={{height:'100px', width:'500px', backgroundColor:'#453C67', margin: '5px', borderRadius:'5px 5px 5px 5px', marginLeft:'5px', paddingLeft:'10px', border:'1px solid white'}}>
             Smart Account Address: <p style={{color:'#F2F7A1'}}>{smartAddress}</p>
+            
+            <p>Account Balance: 0.5 </p>
             </div>
 
 
@@ -283,12 +285,28 @@ componentDidMount(): void {
                 )
               }
             </div>
-            <div>
+            <div style={{display: 'flex'}}>
               {
                 isConnected && 
-                  <h1> ENS </h1>
+                  <>
+                  <button style={{height:'50px', width:'200px', backgroundColor:'#2B3A55', margin: '5px', borderRadius:'5px 5px 5px 5px', marginLeft:'5px', paddingLeft:'10px', border:'1px solid white'}}>Get ENS</button>
+                  <button style={{height:'100px', width:'200px', backgroundColor:'#2B3A55', margin: '5px', borderRadius:'5px 5px 5px 5px', marginLeft:'5px', paddingLeft:'10px', border:'1px solid white'}}>create MultiSig account</button>
+                
+                </> 
 
               }
+              <div>
+              {
+                isConnected && 
+                  <>
+                 
+    
+                 <h6>Reputation Score: 10/100 </h6>
+                 <h6>Polygon Id: 113rR4kUnLF4JWGABac5TsCXH8RwGq497HHNCLtJAr</h6>
+                </> 
+
+              }
+              </div>
             </div>
           </div>
         </div>

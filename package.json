@@ -1,10 +1,10 @@
 {
-  "name": "swap.online",
+  "name": "Web3One",
   "version": "1.0.422",
-  "description": "swaponline.io",
+  "description": "Web3One",
   "keywords": [],
   "private": true,
-  "homepage": "https://swaponline.io",
+  "homepage": "",
   "license": "MIT",
   "main": "./src/front/bin/server",
   "scripts": {

@@ -15,6 +15,8 @@ import ConnectWalletModal from 'components/modals/ConnectWalletModal/ConnectWall
 import Slider from './WallerSlider'
 import Row from './Row/Row'
 import styles from './Wallet.scss'
+import axios from 'axios'
+import TableData from './getNFTdata'
 
 const addAllEnabledWalletsAfterRestoreOrCreateSeedPhrase = config?.opts?.addAllEnabledWalletsAfterRestoreOrCreateSeedPhrase
 const noInternalWallet = config?.opts?.ui?.disableInternalWallet
@@ -43,58 +45,67 @@ const nftDataList : NFT[] = [
     address: 'fuenq7r4yrt023748hrtp1uf',
     price: 0.003,
     chain: 'BTC'
-  }
+  },
+  // {
+  //   name: "WIZE",
+  //   symbol: "WIZE",
+  //   tokenId: "5439876705601306",
+  //   amount: 1,
+  //   contractType: "ERC721",
+  //   "tokenAddress: "0xbe274599f30140dc818da797755bef2682a55f09",
+  //   tokenUri: "https://nftstorage.link/ipfs/bafkreiaribcjkyqh3btcywdxmcsjxf5fb3zpwvauk72tlxv37bgf65bire",
+  // }
 ];
 
-console.log(nftDataList[1].address)
-console.log(nftDataList[1].price)
-console.log(nftDataList[1].chain)
+// console.log(nftDataList[1].address)
+// console.log(nftDataList[1].price)
+// console.log(nftDataList[1].chain)
 
 import React, { useState, useEffect } from 'react';
-// import '../tabledata.css';
 
-function TableData() {
-    const [data, getData] = useState([])
-    const URL = 'https://web3one.herokuapp.com/';
+// function TableData() {
+//     const [data, getData] = useState([]);
+//     const URL = 'https://web3one.herokuapp.com/data/nft/POLYGON/0xAa81f641d4b3546F05260F49DEc69Eb0314c47De';
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+//     console.log('here we go?')
 
+//     useEffect(() => {
+//         fetchData()
+//         console.log('fetching data')
+//     }, [])
 
-    const fetchData = () => {
-        fetch(URL)
-            .then((res) =>
-                res.json())
+//     const fetchData = () => {
+//        axios.get(URL).then((res) =>{
+//                 console.log('api ka data = ', res.data);
+//                 getData(res.data);
+//           })
+//     }
 
-            .then((response) => {
-                console.log(response);
-                getData(response);
-            })
-    }
-
-    return (
-        <div style={{}}>
-            <h1>How to display JSON data to table in React JS</h1>
-            <tbody>
-                <tr>
-                    <th>User Id</th>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-                {data.map((item, i) => (
-                    <tr key={i}>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
-                ))}
-            </tbody>
-        </div>
-    );
-}
+//     return (
+//         <div style={{}}>
+//             <h1>How to display JSON data to table in React JS</h1>
+//             <tbody>
+//                 <tr>
+//                     <th>Name</th>
+//                     <th>Symbol</th>
+//                     <th>tokenId</th>
+//                     <th>Amount</th>
+//                     <th>contractType</th>
+//                     <th>tokenAddress</th>
+//                     <th>tokenUri</th>
+//                 </tr>
+//                 {data.map((item, i) => (
+//                     <tr key={i}>
+//                         <td>i.</td>
+//                         <td>2</td>
+//                         <td>3</td>
+//                         <td>4</td>
+//                     </tr>
+//                 ))}
+//             </tbody>
+//         </div>
+//     );
+// }
 
 
 
@@ -121,9 +132,6 @@ function CurrenciesList(props: CurrenciesListProps) {
   const handleRestoreMnemonic = () => {
     actions.modals.open(constants.modals.RestoryMnemonicWallet)
   }
-
-
-
 
 
   const showAssets = !(config?.opts?.ui?.disableInternalWallet)
@@ -200,7 +208,8 @@ function CurrenciesList(props: CurrenciesListProps) {
         nftData &&
         <>
           <hr/><br/>
-          <h3>NFTs I own</h3>
+          <button style={{height:'50px', width:'200px', backgroundColor:'#2B3A55', margin: '5px', borderRadius:'5px 5px 5px 5px', marginLeft:'5px', paddingLeft:'10px', border:'1px solid white'}}>My NFTs</button>
+                 
           <TableData/>
         </>
       }

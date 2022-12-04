@@ -197,7 +197,7 @@ class WallerSlider extends React.Component<WallerSliderProps, WallerSliderState>
       <div className="data-tut-banners">
         <h3 className={`${styles.bannersHeading}`}>
           {/* <FormattedMessage id="ForYou" defaultMessage="For me" /> */}
-          <h3>Yup man</h3>
+          <h3>Welcome to Web3One!</h3>
         </h3>
         {!this.state.isFetching ? (
           //@ts-ignore
