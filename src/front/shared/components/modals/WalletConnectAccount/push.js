@@ -111,7 +111,6 @@ export PushChat = function(){
     return (
         <>
             <button id="sdk-trigger-id">trigger button</button>
-            <Chat
                 account={account} //user address
                 supportAddress="0xd9c1CCAcD4B8a745e191b62BA3fcaD87229CB26d" //support address
                 apiKey="jVPMCRom1B.iDRMswdehJG7NpHDiECIHwYMMv6k2KzkPJscFIDyW8TtSnk4blYnGa8DIkfuacU0"
